@@ -1,9 +1,9 @@
-import Loginpage from "./LoginPage"
+import Homepage from "./Homepage"
 
 function page() {
   return (
     <>
-     <Loginpage/> 
+      <Homepage/>
     </>
   )
 }

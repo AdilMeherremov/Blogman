@@ -1,9 +1,9 @@
-import Loginpage from "./LoginPage"
+import CreatePost from "./CreatePost"
 
 function page() {
   return (
     <>
-     <Loginpage/> 
+      <CreatePost/>
     </>
   )
 }

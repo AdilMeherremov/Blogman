@@ -1,9 +1,9 @@
-import Loginpage from "./LoginPage"
+import ChangeUsername from "./ChangeUsername"
 
 function page() {
   return (
     <>
-     <Loginpage/> 
+      <ChangeUsername/>
     </>
   )
 }

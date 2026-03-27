@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
+import { Suspense } from "react";
+import { Spinner } from "@/components/ui/spinner";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -9,14 +13,12 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Blogman",
+  description: "Best place to share your thoughts!",
 };
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  display: "swap",
-  subsets: ["latin"],
+const PoppinsFont = Poppins({
+  weight: "500"
 });
 
 export default function RootLayout({
@@ -26,15 +28,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className={`${PoppinsFont.className} antialiased`}>
+        <div className="flex flex-col w-full min-h-screen items-center justify-center ">
+          <Suspense fallback={<Spinner className="size-10" />}>
+            <Header />
+            {children}
+            <Footer />
+            <Toaster />
+          </Suspense>
+        </div>
       </body>
     </html>
   );
