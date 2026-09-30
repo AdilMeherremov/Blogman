@@ -21,4 +21,4 @@ Blogman is a fully responsive blogging platform developed with next.js and supab
 - Language: Typescript
 
 ## Demo link
-[click here](blogman-project.netlify.app)
+[click here](https://blogman-project.netlify.app/)
