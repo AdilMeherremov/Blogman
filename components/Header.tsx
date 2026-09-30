@@ -16,6 +16,7 @@ import { toast } from "sonner"
 function Header() {
 
   const [checkUserExist, setCheckUserExist] = useState<boolean>(false)
+  const [BigScreen, setBigScreen] = useState<boolean>(true)
 
   const LogOutUserCheck = async () => {
     const { message } = await LogOutUser()
@@ -28,6 +29,11 @@ function Header() {
   }
 
   useEffect(() => {
+
+    if (screen.width >= 1024 ){
+      setBigScreen(true)
+    }
+
     const VerifyUserExist = async () => {
       const { userExist } = await CheckIfUserExist()
 
@@ -45,7 +51,7 @@ function Header() {
     <header className="flex w-full h-[8vh] justify-between items-center px-5 text-white bg-blue-500">
       <Link href={'/'} className="text-2xl font-semibold tracking-wide">Blogman</Link>
 
-      {screen.width >= 1024 ?
+      {BigScreen ?
         <nav className="flex gap-x-5 text-lg">
           {checkUserExist ?
             <>
